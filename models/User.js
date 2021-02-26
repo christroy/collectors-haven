@@ -21,7 +21,9 @@ const UserSchema = new Schema (
         password: {
             type: String,
             required: 'A Password is Required',
-            match: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/,
+            match: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,12}$/,
+            min: 8,
+            max: 12
         }
     }
 );
