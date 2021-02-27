@@ -50,7 +50,7 @@ UserSchema.pre('save', function(next) {
         });
     });
 });
-
+// need to use 'save' and not 'update' to update user passwords
 UserSchema.methods.comparePassword = function(candidatePassword, cb) {
     bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
         if (err) return cb(err);

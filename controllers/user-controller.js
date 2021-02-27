@@ -15,7 +15,7 @@ const userController = {
         User.findOne({ _id: params.id })
           .then(dbUserData => {
               if (!dbUserData) {
-                  res.json(404).json({ message: 'No User found with this id' });
+                  res.status(404).json({ message: 'No User found with this id' });
                   return
               }
               res.json(dbUserData);
