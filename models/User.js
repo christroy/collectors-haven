@@ -2,10 +2,10 @@ const { Schema, model, Types } = require('mongoose');
 
 const UserSchema = new Schema (
     {
-        userId: {
-            type: Schema.Types.ObjectId,
-            default: () => Types.ObjectId
-        },
+        // userId: {
+        //     type: Schema.Types.ObjectId,
+        //     default: () => Types.ObjectId
+        // },
         email: {
             type: String,
             required: 'An email is Required!',

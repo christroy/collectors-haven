@@ -1,21 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-    // collection references User, and has items embedded
-const CollectionSchema = new Schema (
-    {
-        name: {
-            type: String,
-            required: true,
-            trim: true
-        },
-        user: {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        },
-        items: [ItemSchema]
-    }
-);
-
 const ItemSchema = new Schema (
     {
         name: {
@@ -35,7 +19,23 @@ const ItemSchema = new Schema (
             type: Number
         }
     }
-)
+);
+
+    // collection references User, and has items embedded
+const CollectionSchema = new Schema (
+    {
+        name: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        user: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        items: ItemSchema
+    }
+);
 
 const Collection = model('Collection', CollectionSchema);
 
