@@ -1,13 +1,9 @@
-const { Schema, model, Types } = require('mongoose');
+const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const UserSchema = new Schema (
     {
-        // userId: {
-        //     type: Schema.Types.ObjectId,
-        //     default: () => Types.ObjectId
-        // },
         email: {
             type: String,
             required: 'An email is Required!',

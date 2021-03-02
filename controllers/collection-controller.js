@@ -14,6 +14,10 @@ const collectionController = {
 
     getCollectionById({ params }, res) {
         Collection.findOne({ _id: params.id })
+          .populate({
+              path: 'user',
+              select: 'username'
+          })
           .select('-__v')
           .then(dbCollectionData => {
               if(!dbCollectionData) {
