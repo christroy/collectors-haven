@@ -4,6 +4,7 @@ const collectionController = {
 
     getAllCollections(req, res) {
         Collection.find({})
+          .select('-__v')
           .then(dbCollectionData => res.json(dbCollectionData))
           .catch(err => {
               console.log(err);
@@ -13,6 +14,7 @@ const collectionController = {
 
     getCollectionById({ params }, res) {
         Collection.findOne({ _id: params.id })
+          .select('-__v')
           .then(dbCollectionData => {
               if(!dbCollectionData) {
                   res.status(404).json({ message: 'No Collection found with this id' });

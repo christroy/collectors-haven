@@ -4,6 +4,7 @@ const userController = {
 
     getAllUsers(req, res) {
         User.find({})
+          .select('-__v')
           .then(dbUserData => res.json(dbUserData))
           .catch(err => {
             console.log(err);
@@ -13,6 +14,7 @@ const userController = {
         // write a catch function for reuse, takes in status code as parameter????
     getUserById({ params }, res) {
         User.findOne({ _id: params.id })
+          .select('-__v')
           .then(dbUserData => {
               if (!dbUserData) {
                   res.status(404).json({ message: 'No User found with this id' });
