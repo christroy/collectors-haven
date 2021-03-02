@@ -33,7 +33,7 @@ const CollectionSchema = new Schema (
             type: Schema.Types.ObjectId,
             ref: 'User'
         },
-        items: ItemSchema
+        items: [ItemSchema]
     }
 );
 

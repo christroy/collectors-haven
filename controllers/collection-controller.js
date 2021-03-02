@@ -1,4 +1,4 @@
-const { Collection } = require('../models')
+const { Collection } = require('../models');
 
 const collectionController = {
 
@@ -54,7 +54,24 @@ const collectionController = {
               res.json(dbCollectionData)
           })
           .catch(err => res.status(400).json(err))
-    }
+    },
+
+
+    createItem({ params, body }, res) {
+        Collection.findOneAndUpdate(
+            { _id: params.collectionId },
+            { $push: { items: body } },
+            { new: true, runValidators: true }
+        )
+            .then(dbItemData => {
+                if (!dbItemData) {
+                    res.status(404).json({ message: 'No Collection found with this id' });
+                    return;
+                }
+                res.json(dbItemData)
+            })
+            .catch(err => res.status(400).json(err))
+    },
 }
 
 module.exports = collectionController;

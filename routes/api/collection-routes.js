@@ -5,15 +5,18 @@ const {
     getCollectionById,
     createCollection,
     updateCollection,
-    deleteCollection
+    deleteCollection,
+    createItem
 } = require('../../controllers/collection-controller');
-const userController = require('../../controllers/user-controller');
 
 // GET & POST under /api/collections
 router 
     .route('/')
     .get(getAllCollections)
     .post(createCollection);
+
+router
+    .route('/:collectionId').post(createItem);
 
 
 router 
